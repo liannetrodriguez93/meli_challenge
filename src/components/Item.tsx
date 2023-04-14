@@ -10,8 +10,8 @@ interface Props {
 const Item = ({ item }: Props) => {
   return (
     <Link href={`/product/${item.id}`}>
-      <div className='grid w-full min-w-0 grid-cols-2 gap-4 p-4 border-2 rounded-md shadow-md grid-col sm:grid-rows-2 md:grid-rows-2 xl:grid-rows-2'>
-        <div className='grid place-content-center'>
+      <div className='grid w-full min-w-0 grid-cols-2 gap-4 p-4 border-2 rounded-md shadow-md grid-col sm:grid-rows-2'>
+        <div className='grid place-content-center sm:col-span-2'>
           <Image
             src={`https://http2.mlstatic.com/D_NQ_NP_932002-${item.thumbnail_id}-V.webp`}
             alt={item.title}
@@ -21,7 +21,7 @@ const Item = ({ item }: Props) => {
             height={160}
           />
         </div>
-        <div className='grid place-content-evenly'>
+        <div className='grid place-content-evenly sm:col-span-2'>
           <h1>{item.title}</h1>
           <p>
             {item.currency_id} {item.price}
