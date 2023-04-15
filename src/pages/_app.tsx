@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
             }`}
             handleCloseSidebar={handleSidebarToggle}
           />
-          <main className='flex-1 pt-8'>
+          <main className='flex-1'>
             <Component {...pageProps} />
           </main>
         </div>

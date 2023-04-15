@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from './Item';
+import Product from './Product';
 import { Result } from '@interfaces/MeliReq';
 
 interface Props {
@@ -8,9 +8,12 @@ interface Props {
 
 const ListItem = ({ data }: Props) => {
   return (
-    <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
+    <div
+      className='grid grid-cols-1 gap-4 h-min sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+      style={{ gridAutoColumns: 'min-content' }}
+    >
       {data.map((item) => (
-        <Item key={item.id} item={item} />
+        <Product key={item.id} item={item} />
       ))}
     </div>
   );
