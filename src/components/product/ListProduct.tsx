@@ -6,12 +6,9 @@ interface Props {
   data: Result[];
 }
 
-const ListItem = ({ data }: Props) => {
+const ListProduct = ({ data }: Props) => {
   return (
-    <div
-      className='grid grid-cols-1 gap-4 h-min sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-      style={{ gridAutoColumns: 'min-content' }}
-    >
+    <div className='grid grid-cols-1 gap-4 h-min md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {data.map((item) => (
         <Product key={item.id} item={item} />
       ))}
@@ -19,4 +16,4 @@ const ListItem = ({ data }: Props) => {
   );
 };
 
-export default ListItem;
+export default ListProduct;

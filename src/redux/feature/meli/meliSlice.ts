@@ -4,20 +4,23 @@ import { Result } from '@interfaces/MeliReq';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchData } from './meliThunk';
 import { IAvailableFilters } from '@interfaces/IAvailableFilters';
+import { IPaginResults } from '@interfaces/IPaginResults';
 
 export interface MeliState {
   loading: boolean;
   data: Result[];
   availableFilters: IAvailableFilters[] | null;
   query: string | null;
+  pagin: IPaginResults | null;
   error: string | null;
 }
 
 const initialState: MeliState = {
+  loading: false,
   data: [],
   availableFilters: [],
-  loading: false,
   query: null,
+  pagin: null,
   error: null,
 };
 
@@ -26,11 +29,13 @@ export const meliSlice = createSlice({
   initialState,
   reducers: {
     setQuery: (state, action: PayloadAction<string | null>) => {
-      console.log(action);
       state.query = action.payload;
     },
     setFilters: (state, action: PayloadAction<IAvailableFilters[] | null>) => {
       state.availableFilters = action.payload;
+    },
+    setPaginResults: (state, action: PayloadAction<IPaginResults | null>) => {
+      state.pagin = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -53,6 +58,6 @@ export const meliSlice = createSlice({
   },
 });
 
-export const { setQuery, setFilters } = meliSlice.actions;
+export const { setQuery, setFilters, setPaginResults } = meliSlice.actions;
 
 export default meliSlice.reducer;

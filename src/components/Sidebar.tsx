@@ -1,27 +1,11 @@
 import React from 'react';
+import FilterPanel from './filter/FilterPanel';
 
-interface Props {
-  className: string;
-  handleCloseSidebar: () => void;
-}
-
-const Sidebar = ({ className, handleCloseSidebar }: Props) => {
+const Sidebar = () => {
   return (
-    <div className={className}>
-      <button
-        className='absolute px-3 py-1 bg-white rounded-full right-2 top-2 text-secondary'
-        onClick={handleCloseSidebar}
-      >
-        X
-      </button>
-      <nav>
-        <ul>
-          <li>Inicio</li>
-          <li>Acerca de</li>
-          <li>Contacto</li>
-        </ul>
-      </nav>
-    </div>
+    <>
+      <FilterPanel />
+    </>
   );
 };
 

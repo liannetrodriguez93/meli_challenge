@@ -2,10 +2,12 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import meliSlice from '@reduxConfig/feature/meli/meliSlice';
 import thunk from 'redux-thunk';
+import filterBarSlice from './feature/filterBar/filterBarSlice';
 
 export const store = configureStore({
   reducer: {
     meli: meliSlice,
+    filterBar: filterBarSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });

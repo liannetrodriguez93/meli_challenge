@@ -1,4 +1,4 @@
-import ProductInfo from '@component/ProductInfo';
+import ProductInfo from '@component/product/ProductInfo';
 import { IProductDetail } from '@interfaces/IProductDetail';
 import { IProductInfo } from '@interfaces/IProductInfo';
 import Link from 'next/link';

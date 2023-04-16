@@ -4,10 +4,10 @@ export interface IAvailableFilters {
   id: string;
   name: string;
   type: string;
-  values: Value[];
+  values: IFiltersValue[];
 }
 
-export interface Value {
+export interface IFiltersValue {
   id: string;
   name: string;
   results: number;

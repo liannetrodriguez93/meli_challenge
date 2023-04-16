@@ -25,7 +25,7 @@ const ProductLayout = ({ children }: any) => {
       transform:
         screenSize.width >= 1024
           ? 'translate(30%, 15%)'
-          : 'translate(10%, 10%)',
+          : 'translate(12%, 12%)',
     },
   };
 

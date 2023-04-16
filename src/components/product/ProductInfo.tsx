@@ -11,11 +11,11 @@ const ProductInfo = ({ product }: Props) => {
   return (
     <article>
       <div className='grid grid-cols-1 gap-4 mx-auto md:px-6 md:py-10 md:grid-cols-2'>
-        <div className='w-full h-full md:mb-0'>
+        <div className='flex justify-center w-full h-full md:mb-0'>
           <Image
             src={`https://http2.mlstatic.com/D_NQ_NP_932002-${product.thumbnail_id}-V.webp`}
             alt={product.title}
-            className='grid object-cover w-full align-middle place-items-center '
+            className='object-cover w-3/4'
             loading='lazy'
             width={250}
             height={250}
