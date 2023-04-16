@@ -16,7 +16,7 @@ export interface MeliState {
 }
 
 const initialState: MeliState = {
-  loading: false,
+  loading: true,
   data: [],
   availableFilters: [],
   query: null,

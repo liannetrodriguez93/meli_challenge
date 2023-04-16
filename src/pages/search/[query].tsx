@@ -1,10 +1,13 @@
-import ListProduct from '@component/product/ListProduct';
+'use client';
+
 import React, { useEffect, useState } from 'react';
-import { useAppSelector } from '@hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/hooks';
 import { ScaleLoader } from 'react-spinners';
 import SearchResults from '@component/search/SearchResult';
 import Sidebar from '@component/Sidebar';
 import useGetWindowSize from '@hooks/useGetWindowSize';
+import { fetchData } from '@reduxConfig/feature/meli/meliThunk';
+import { useRouter } from 'next/router';
 
 const ProductList = () => {
   const { loading } = useAppSelector((state) => state.meli);

@@ -18,9 +18,8 @@ const PaginationBar = () => {
           <li key={page}>
             <Link href={`/${page}`} legacyBehavior>
               <a
-                className={`block p-3 text-center border border-gray-300 text-gray-500 hover:bg-background hover:text-gray-700 ${
-                  page === pagin?.offset ? 'bg-gray-100' : ''
-                }`}
+                className={`block p-2 w-10 text-center border border-gray-300 text-gray-500 hover:bg-background hover:text-gray-700 
+                ${page === pagin?.offset ? 'bg-secondary text-white' : ''}`}
               >
                 <div>{page}</div>
               </a>

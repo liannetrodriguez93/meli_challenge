@@ -11,7 +11,7 @@ interface Props {
 
 export default function Home({ dataWithDiscount }: Props) {
   return (
-    <div className='grid grid-rows-1 gap-4'>
+    <div className='grid grid-rows-1 gap-4 p-4'>
       {dataWithDiscount && dataWithDiscount.results.length > 0 && (
         <>
           <h1 className=''>Descuentos</h1>
