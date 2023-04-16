@@ -1,11 +1,11 @@
 import ProductInfo from '@component/product/ProductInfo';
 import { IProductDetail } from '@interfaces/IProductDetail';
 import { IProductInfo } from '@interfaces/IProductInfo';
-import Link from 'next/link';
 import React from 'react';
 import Modal from 'react-modal';
 import ProductLayout from './layout';
 import ProductDetail from './detail';
+import ProductTable from '@component/product/ProductTable';
 
 Modal.setAppElement('#root');
 
@@ -20,7 +20,10 @@ const ProductData = ({ product, detail }: Props) => {
       {product && (
         <ProductLayout>
           <ProductInfo product={product} />
-          <ProductDetail detail={detail} />
+          <div className='text-gray-700 bg-gray-100 rounded shadow '>
+            <ProductTable attributes={product.attributes} />
+            <ProductDetail detail={detail} />
+          </div>
         </ProductLayout>
       )}
     </>

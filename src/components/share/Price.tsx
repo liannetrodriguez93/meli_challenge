@@ -10,7 +10,7 @@ const Price = ({ originalPrice, price }: Props) => {
     ? Math.floor(100 - (price * 100) / originalPrice)
     : 0;
   return (
-    <>
+    <div>
       {!!originalPrice && (
         <div className='flex items-center'>
           <span className='mr-2 text-sm line-through h-min w-min'>
@@ -22,7 +22,7 @@ const Price = ({ originalPrice, price }: Props) => {
         </div>
       )}
       <span className='text-lg font-medium text-black'>${price} </span>
-    </>
+    </div>
   );
 };
 
