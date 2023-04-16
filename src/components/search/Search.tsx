@@ -1,36 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { useAppDispatch } from '@hooks/hooks';
-import { fetchData } from '@reduxConfig/feature/meli/meliThunk';
-import { useRouter } from 'next/router';
+import useSearchProduct from '@hooks/useSearchProduct';
 
 const Search = () => {
-  const [query, setQuery] = useState('');
-  const dispatch = useAppDispatch();
-  const router = useRouter();
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    dispatch(fetchData(query));
-    router.push(`/search/${query}`);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      const submitEvent = new Event('submit', {
-        bubbles: true,
-        cancelable: true,
-      });
-      event.currentTarget.form?.dispatchEvent(submitEvent);
-    }
-  };
-
-  //   const clearSearchBar = () => {
-  //     console.log('clear search bar');
-  //     setQuery('');
-  //   };
+  const { query, handleSetQuery, handleSubmit, handleKeyDown } =
+    useSearchProduct();
 
   return (
     <form onSubmit={handleSubmit} className='w-full gap-4'>
@@ -43,7 +17,7 @@ const Search = () => {
           aria-label='Search'
           aria-describedby='button-search'
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => handleSetQuery(event.target.value)}
           onKeyDown={handleKeyDown}
         />
         <button className='col-span-1 px-3 py-1 text-white rounded-md bg-primary'>
