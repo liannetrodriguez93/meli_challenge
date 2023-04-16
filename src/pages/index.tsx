@@ -1,4 +1,4 @@
-import ListProduct from '@component/product/ListProduct';
+import ProductList from '@component/product/ProductList';
 import { MeliReq } from '@interfaces/MeliReq';
 
 interface MeliRes extends MeliReq {
@@ -15,7 +15,7 @@ export default function Home({ dataWithDiscount }: Props) {
       {dataWithDiscount && dataWithDiscount.results.length > 0 && (
         <>
           <h1 className=''>Descuentos</h1>
-          <ListProduct data={dataWithDiscount.results} />
+          <ProductList data={dataWithDiscount.results} />
         </>
       )}
     </div>

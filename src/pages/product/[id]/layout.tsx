@@ -1,7 +1,5 @@
 import { useAppSelector } from '@hooks/hooks';
 import useGetWindowSize from '@hooks/useGetWindowSize';
-import { IProductDetail } from '@interfaces/IProductDetail';
-import { IProductInfo } from '@interfaces/IProductInfo';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Modal from 'react-modal';

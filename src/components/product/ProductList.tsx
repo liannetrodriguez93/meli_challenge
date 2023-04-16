@@ -6,7 +6,7 @@ interface Props {
   data: Result[];
 }
 
-const ListProduct = ({ data }: Props) => {
+const ProductList = ({ data }: Props) => {
   return (
     <div className='grid grid-cols-1 gap-4 h-min md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {data.map((item) => (
@@ -16,4 +16,4 @@ const ListProduct = ({ data }: Props) => {
   );
 };
 
-export default ListProduct;
+export default ProductList;

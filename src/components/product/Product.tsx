@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { FaHeart, FaCartPlus, FaEye } from 'react-icons/fa';
 import SquareIconButton from '../share/SquareIconButton';
+import Price from '@component/share/Price';
 
 interface Props {
   item: Result;
@@ -28,8 +29,15 @@ const Product = ({ item }: Props) => {
             <h5 className='h-16 text-sm font-medium sm:text-md line-clamp-3'>
               {item.title}
             </h5>
-            <span>${item.price}</span>
-            <div className='grid grid-flow-col'>
+            <div className='grid grid-flow-row'>
+              <Price originalPrice={item.original_price} price={item.price} />
+              {item.available_quantity === 1 && (
+                <span className='text-xs font-medium text-red-500'>
+                  Solo uno en stock ordenar pronto
+                </span>
+              )}
+            </div>
+            <div className='grid grid-flow-col place-items-center'>
               <SquareIconButton>
                 <FaEye />
               </SquareIconButton>

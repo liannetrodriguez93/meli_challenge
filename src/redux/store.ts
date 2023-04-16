@@ -4,8 +4,6 @@ import {
   configureStore,
   ThunkAction,
   combineReducers,
-  createMiddleware,
-  createSerializableStateInvariantMiddleware,
 } from '@reduxjs/toolkit';
 import meliSlice from '@reduxConfig/feature/meli/meliSlice';
 import thunk from 'redux-thunk';

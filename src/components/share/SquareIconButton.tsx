@@ -7,7 +7,7 @@ interface Props {
 
 const SquareIconButton = ({ children }: Props) => {
   return (
-    <button className='flex items-center justify-center w-10 h-10 p-2 ml-2 mr-2 text-white rounded bg-secondary hover:bg-primary hover:text-white'>
+    <button className='flex items-center justify-center w-8 h-8 p-2 mx-2 text-white rounded bg-secondary hover:bg-primary hover:text-white'>
       {children}
     </button>
   );
