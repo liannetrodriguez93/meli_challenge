@@ -9,7 +9,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <LayoutRoot title='Challenge Meli'>
       <div className='flex flex-col h-screen'>
         <Header />
-        <FilterHeader />
         <div className='flex flex-1'>
           <main className='flex-1'>
             <Component {...pageProps} />

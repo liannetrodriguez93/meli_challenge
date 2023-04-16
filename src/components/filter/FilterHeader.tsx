@@ -13,9 +13,6 @@ const FilterHeader = () => {
     dispatch(setOpenFilterBar());
   };
 
-  const buttonClass =
-    'grid grid-flow-col gap-1 p-1 pl-4 pr-4 rounded place-items-center bg-primary w-min';
-
   if (asPath === `/search/${query.query}`) {
     return (
       <div className='grid w-full grid-cols-2 gap-4 px-4 py-2 text-white bg-secondary md:px-8'>
