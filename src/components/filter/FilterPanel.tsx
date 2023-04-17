@@ -24,13 +24,13 @@ const FilterPanel = () => {
       >
         <span className='text-lg font-medium text-white'>X</span>
       </button>
-      <div className='grid w-full grid-flow-row'>
+      <div className='grid grid-flow-row mb-2 w-fit'>
         <h2 className='mb-2 text-lg font-bold'>Filtro seleccionado(s):</h2>
-        <div className='grid grid-flow-col gap-4 w-fit'>
+        <div className='flex flex-wrap w-full gap-2'>
           {filterSelected.map((filter: Filter) => (
             <FilterSelected
               key={filter.id}
-              text={filter.name}
+              filter={filter}
               onRemove={() => console.log('remove selected filter')}
             />
           ))}

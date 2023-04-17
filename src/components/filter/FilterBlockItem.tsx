@@ -13,14 +13,14 @@ const FilterBlockItem = ({ item, optionId }: Props) => {
 
   const newQuery = `${optionId}=${encodeURIComponent(item.id)}`;
   let newLink = '';
+  const splitedQueries = asPath
+    .split('&')
+    .filter((query) => !query.includes(optionId) && !query.includes('offset'))
+    .join('&');
   if (asPath.includes(optionId)) {
-    const splitedQueries = asPath.split('&');
-    const filterSplited = splitedQueries.filter(
-      (query) => !query.includes(optionId)
-    );
-    newLink = `search?${filterSplited.join('&')}&${newQuery}`;
+    newLink += `${splitedQueries}&${newQuery}`;
   } else {
-    newLink = `${asPath}&${newQuery}`;
+    newLink = `${splitedQueries}&${newQuery}`;
   }
 
   return (
