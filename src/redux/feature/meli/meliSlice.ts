@@ -1,6 +1,6 @@
 'use client';
 
-import { Result } from '@interfaces/MeliReq';
+import { Filter, Result } from '@interfaces/MeliReq';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchData } from './meliThunk';
 import { IAvailableFilters } from '@interfaces/IAvailableFilters';
@@ -9,8 +9,8 @@ import { IPaginResults } from '@interfaces/IPaginResults';
 export interface MeliState {
   loading: boolean;
   data: Result[];
-  availableFilters: IAvailableFilters[] | null;
-  query: string | null;
+  availableFilters: IAvailableFilters[];
+  filterSelected: Filter[];
   pagin: IPaginResults | null;
   error: string | null;
 }
@@ -19,7 +19,7 @@ const initialState: MeliState = {
   loading: true,
   data: [],
   availableFilters: [],
-  query: null,
+  filterSelected: [],
   pagin: null,
   error: null,
 };
@@ -28,14 +28,14 @@ export const meliSlice = createSlice({
   name: 'meliSlice',
   initialState,
   reducers: {
-    setQuery: (state, action: PayloadAction<string | null>) => {
-      state.query = action.payload;
-    },
-    setFilters: (state, action: PayloadAction<IAvailableFilters[] | null>) => {
+    setFilters: (state, action: PayloadAction<IAvailableFilters[]>) => {
       state.availableFilters = action.payload;
     },
     setPaginResults: (state, action: PayloadAction<IPaginResults | null>) => {
       state.pagin = action.payload;
+    },
+    setFilterSelected: (state, action: PayloadAction<Filter[]>) => {
+      state.filterSelected = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -58,6 +58,7 @@ export const meliSlice = createSlice({
   },
 });
 
-export const { setQuery, setFilters, setPaginResults } = meliSlice.actions;
+export const { setFilters, setPaginResults, setFilterSelected } =
+  meliSlice.actions;
 
 export default meliSlice.reducer;

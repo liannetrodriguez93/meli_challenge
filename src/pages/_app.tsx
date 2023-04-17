@@ -1,4 +1,3 @@
-import FilterHeader from '@component/filter/FilterHeader';
 import Header from '@component/Header';
 import LayoutRoot from '@component/Layout';
 import '@styles/globals.css';

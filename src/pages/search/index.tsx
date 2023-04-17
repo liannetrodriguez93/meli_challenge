@@ -1,18 +1,22 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useAppSelector } from '@hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/hooks';
 import SearchResults from '@component/search/SearchResult';
 import Sidebar from '@component/Sidebar';
 import useGetWindowSize from '@hooks/useGetWindowSize';
 import FilterHeader from '@component/filter/FilterHeader';
 import Loader from '@component/share/Loader';
+import { useRouter } from 'next/router';
+import { fetchData } from '@reduxConfig/feature/meli/meliThunk';
 
 const ProductList = () => {
   const { loading } = useAppSelector((state) => state.meli);
   const { open } = useAppSelector((state) => state.filterBar);
   const [sideBarClass, setSideBarClass] = useState('initialState');
   const { screenSize } = useGetWindowSize();
+  const { query, asPath } = useRouter();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (screenSize.width < 640) {
@@ -23,6 +27,13 @@ const ProductList = () => {
       }
     }
   }, [open]);
+
+  useEffect(() => {
+    if (Object.keys(query).length > 0) {
+      const newQuery = asPath.split('?')[1];
+      dispatch(fetchData(newQuery));
+    }
+  }, [query, query]);
 
   return (
     <>

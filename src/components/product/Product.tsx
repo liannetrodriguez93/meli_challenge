@@ -25,11 +25,11 @@ const Product = ({ product }: Props) => {
               height={160}
             />
           </div>
-          <div className='grid items-center w-full grid-flow-col col-span-3 grid-rows-3 p4 md:col-span-5'>
+          <div className='grid items-center w-full grid-flow-col col-span-3 grid-rows-3 h-min p4 md:col-span-5'>
             <h5 className='h-16 text-sm font-medium sm:text-md line-clamp-3'>
               {product.title}
             </h5>
-            <div className='grid grid-flow-row'>
+            <div className='grid items-center h-20 grid-flow-row'>
               <Price
                 originalPrice={product.original_price}
                 price={product.price}
@@ -40,7 +40,7 @@ const Product = ({ product }: Props) => {
                 </span>
               )}
             </div>
-            <div className='grid grid-flow-col place-items-center'>
+            <div className='grid grid-flow-col h-fit place-items-center'>
               <SquareIconButton>
                 <FaEye />
               </SquareIconButton>

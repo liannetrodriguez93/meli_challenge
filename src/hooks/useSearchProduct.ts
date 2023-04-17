@@ -1,26 +1,25 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from './hooks';
 import { useRouter } from 'next/router';
-import { fetchData } from '@reduxConfig/feature/meli/meliThunk';
 
 const useSearchProduct = () => {
-  const [query, setQuery] = useState('');
-  const dispatch = useAppDispatch();
+  const [queryValue, setQueryValue] = useState('');
   const router = useRouter();
-  const { query: queryInit } = useAppSelector((state) => state.meli);
 
   useEffect(() => {
-    setQuery(queryInit);
-  }, [queryInit]);
+    const newQuery = router.query.q?.toString() ?? '';
+    setQueryValue(newQuery);
+  }, [router.query]);
 
-  const handleSetQuery = (query: string) => setQuery(query);
+  const handleSetQuery = (query: string) => setQueryValue(query);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(fetchData(query));
-    router.push(`/search/${query}`);
+    router.push({
+      pathname: '/search',
+      query: { q: queryValue },
+    });
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -35,7 +34,7 @@ const useSearchProduct = () => {
   };
 
   return {
-    query,
+    queryValue,
     handleSetQuery,
     handleSubmit,
     handleKeyDown,
