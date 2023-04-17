@@ -15,9 +15,14 @@ const FilterHeader = () => {
     dispatch(setOpenFilterBar());
   };
 
-  const headerText = `${pagin.offset} - ${pagin.offset * pagin.limit} de ${
-    pagin.total
-  } resultados para \"${query.q}\"`;
+  const initialElement =
+    pagin.offset === 1 ? 1 : (pagin.offset - 1) * pagin.limit + 1;
+  const finalElement =
+    pagin.offset * pagin.limit > pagin.total
+      ? pagin.total
+      : pagin.offset * pagin.limit;
+  const total = finalElement === pagin.total ? '' : `de ${pagin.total}`;
+  const headerText = `${initialElement} - ${finalElement} ${total} resultados para \"${query.q}\"`;
 
   return (
     <div className='grid items-baseline w-full grid-cols-2 grid-rows-2 gap-4 px-4 py-2 text-white sm:grid-rows-1 bg-secondary md:px-8'>
