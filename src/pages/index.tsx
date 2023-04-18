@@ -1,5 +1,4 @@
 import BannerCarousel from '@components/BannerCarousel';
-import ProductList from '@components/product/ProductList';
 import { IMeliReq } from '@interfaces/IMeliReq';
 
 interface MeliRes extends IMeliReq {
@@ -12,20 +11,12 @@ interface Props {
 
 export default function Home({ dataWithDiscount }: Props) {
   return (
-    <div className='w-full'>
-      {/* <BannerCarousel /> */}
-      <h1>Bienvenido a mi sitio web</h1>
+    <div className='grid w-full h-full grid-flow-row'>
+      <BannerCarousel />
+      <h1 className='flex justify-center p-4 text-2xl font-semibold text-primary'>
+        Bienvenido al challenge de Meli
+      </h1>
       <p>...</p>
     </div>
   );
 }
-
-// export async function getStaticProps() {
-//   console.log('get static props');
-//   const res = await fetch(
-//     'https://api.mercadolibre.com/sites/MLA/search?q=:mesa?discount=40-100'
-//   );
-//   const dataWithDiscount: MeliRes = await res.json();
-
-//   return { props: { dataWithDiscount }, revalidate: 60 };
-// }

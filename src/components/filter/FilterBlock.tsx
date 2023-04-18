@@ -1,9 +1,9 @@
-import { IAvailableFilters } from '@interfaces/IAvailableFilters';
 import React from 'react';
 import FilterBlockItem from './FilterBlockItem';
+import { IAvailableFilter } from '@interfaces/IMeliReq';
 
 interface Props {
-  option: IAvailableFilters;
+  option: IAvailableFilter;
 }
 
 const FilterBlock = ({ option }: Props) => {

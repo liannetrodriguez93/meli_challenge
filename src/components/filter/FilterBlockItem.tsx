@@ -23,7 +23,7 @@ const FilterBlockItem = ({ item, optionId }: Props) => {
   return (
     <Link href={newLink}>
       <div className='ml-2 hover:text-background'>
-        <span className='text-sm font-medium'>{item.name}</span>
+        <span className='text-sm font-normal'>{item.name}</span>
         <span className='ml-1 text-xs text-gray-500'>({item.results})</span>
       </div>
     </Link>
