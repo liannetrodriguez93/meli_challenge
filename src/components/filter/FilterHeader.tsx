@@ -1,14 +1,14 @@
-import { useAppDispatch, useAppSelector } from '@hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/useHookApp';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { setOpenFilterBar } from '@reduxConfig/feature/filterBar/filterBarSlice';
-import SortBy from '@component/search/SortBy';
+import SortBy from '@components/search/SortBy';
 
 const FilterHeader = () => {
   const { query } = useRouter();
   const { open } = useAppSelector((state) => state.filterBar);
-  const { pagin } = useAppSelector((state) => state.meli);
+  const { pagin } = useAppSelector((state) => state.productListSlice);
   const dispatch = useAppDispatch();
 
   const handleOpenFilterBar = () => {

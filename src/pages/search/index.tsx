@@ -1,17 +1,22 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@hooks/hooks';
-import SearchResults from '@component/search/SearchResult';
-import Sidebar from '@component/Sidebar';
+import { useAppDispatch, useAppSelector } from '@hooks/useHookApp';
+import SearchResults from '@components/search/SearchResult';
+import Sidebar from '@components/Sidebar';
 import useGetWindowSize from '@hooks/useGetWindowSize';
-import FilterHeader from '@component/filter/FilterHeader';
-import Loader from '@component/share/Loader';
+import FilterHeader from '@components/filter/FilterHeader';
+import Loader from '@components/share/Loader';
 import { useRouter } from 'next/router';
-import { fetchData } from '@reduxConfig/feature/meli/meliThunk';
+import { fetchProductList } from '@reduxConfig/feature/product/productThunk/meliThunk';
+import ProductLayout from '@components/product/ProductModal';
+import ProductInfo from '@components/product/ProductInfo';
+import ProductTableAtributes from '@components/product/ProductTable';
+import ProductDetail from '@components/product/ProductDetail';
 
 const ProductList = () => {
-  const { loading } = useAppSelector((state) => state.meli);
+  const { loading } = useAppSelector((state) => state.productListSlice);
+  const { isOpenModal } = useAppSelector((state) => state.productInfoSlice);
   const { open } = useAppSelector((state) => state.filterBar);
   const [sideBarClass, setSideBarClass] = useState('initialState');
   const { screenSize } = useGetWindowSize();
@@ -31,7 +36,7 @@ const ProductList = () => {
   useEffect(() => {
     if (Object.keys(query).length > 0) {
       const newQuery = asPath.split('?')[1];
-      dispatch(fetchData(newQuery));
+      dispatch(fetchProductList(newQuery));
     }
   }, [query, query]);
 
@@ -52,6 +57,15 @@ const ProductList = () => {
               <SearchResults />
             </div>
           </div>
+          {isOpenModal && (
+            <ProductLayout>
+              <ProductInfo />
+              <div className='text-gray-700 bg-gray-100 rounded shadow '>
+                <ProductTableAtributes />
+                <ProductDetail />
+              </div>
+            </ProductLayout>
+          )}
         </div>
       )}
     </>

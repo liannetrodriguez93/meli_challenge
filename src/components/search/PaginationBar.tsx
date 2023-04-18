@@ -1,4 +1,4 @@
-import { useAppSelector } from '@hooks/hooks';
+import { useAppSelector } from '@hooks/useHookApp';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 const PaginationBar = () => {
   const { asPath } = useRouter();
-  const { pagin } = useAppSelector((state) => state.meli);
+  const { pagin } = useAppSelector((state) => state.productListSlice);
 
   const totalPage = Math.ceil(pagin.total / pagin.limit);
   const paginLength = totalPage > 5 ? 5 : totalPage;

@@ -1,16 +1,19 @@
-import { useAppSelector } from '@hooks/hooks';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '@hooks/useHookApp';
 import useGetWindowSize from '@hooks/useGetWindowSize';
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { setIsOpenModal } from '@reduxConfig/feature/product/productSlices/productInfoSlice';
 
 Modal.setAppElement('#root');
 
 const ProductLayout = ({ children }: any) => {
-  const [isOpen, setIsOpen] = useState(true);
   const { screenSize } = useGetWindowSize();
-  const { query } = useAppSelector((state) => state.meli);
-  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { isOpenModal } = useAppSelector((state) => state.productInfoSlice);
+
+  const handleViewClick = () => {
+    dispatch(setIsOpenModal());
+  };
 
   const customStyles = {
     content: {
@@ -27,18 +30,13 @@ const ProductLayout = ({ children }: any) => {
     },
   };
 
-  const handleClose = () => {
-    router.push(`/search/${query}`);
-    setIsOpen((open) => !open);
-  };
-
   return (
     <>
-      <Modal isOpen={isOpen} style={customStyles}>
+      <Modal isOpen={isOpenModal} style={customStyles}>
         {children}
         <button
           className='absolute px-3 py-1 text-white rounded-full bg-primary right-2 top-2'
-          onClick={handleClose}
+          onClick={handleViewClick}
         >
           X
         </button>

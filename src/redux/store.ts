@@ -5,12 +5,13 @@ import {
   ThunkAction,
   combineReducers,
 } from '@reduxjs/toolkit';
-import meliSlice from '@reduxConfig/feature/meli/meliSlice';
+import productListSlice from '@reduxConfig/feature/product/productSlices/productListSlice';
 import thunk from 'redux-thunk';
 import filterBarSlice from './feature/filterBar/filterBarSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { PersistConfig, persistStore } from 'redux-persist';
+import productInfoSlice from './feature/product/productSlices/productInfoSlice';
 
 const persistConfig: PersistConfig<RootState> = {
   key: 'root',
@@ -18,7 +19,8 @@ const persistConfig: PersistConfig<RootState> = {
 };
 
 const rootReducer = combineReducers({
-  meli: meliSlice,
+  productListSlice: productListSlice,
+  productInfoSlice: productInfoSlice,
   filterBar: filterBarSlice,
 });
 

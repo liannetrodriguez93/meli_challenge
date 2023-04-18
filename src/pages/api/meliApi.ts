@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { MeliReq } from '@interfaces/MeliReq';
+import { IMeliReq } from '@interfaces/IMeliReq';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<MeliReq>
+  res: NextApiResponse<IMeliReq>
 ) {
   console.log(req);
   const response = await fetch(

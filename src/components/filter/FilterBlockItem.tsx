@@ -1,10 +1,10 @@
-import { IFiltersValue } from '@interfaces/IAvailableFilters';
+import { AvailableFilterValue } from '@interfaces/IMeliReq';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
 interface Props {
-  item: IFiltersValue;
+  item: AvailableFilterValue;
   optionId: string;
 }
 
@@ -12,16 +12,13 @@ const FilterBlockItem = ({ item, optionId }: Props) => {
   const { asPath } = useRouter();
 
   const newQuery = `${optionId}=${encodeURIComponent(item.id)}`;
-  let newLink = '';
+
   const splitedQueries = asPath
     .split('&')
     .filter((query) => !query.includes(optionId) && !query.includes('offset'))
     .join('&');
-  if (asPath.includes(optionId)) {
-    newLink += `${splitedQueries}&${newQuery}`;
-  } else {
-    newLink = `${splitedQueries}&${newQuery}`;
-  }
+
+  const newLink = `${splitedQueries}&${newQuery}`;
 
   return (
     <Link href={newLink}>

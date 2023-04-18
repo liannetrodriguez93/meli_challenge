@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@component/*": ["./src/components/*"],
+      "@components/*": ["./src/components/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@styles/*": ["./src/styles/*"],
       "@reduxConfig/*": ["./src/redux/*"],

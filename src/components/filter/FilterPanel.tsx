@@ -1,14 +1,13 @@
-import { useAppDispatch, useAppSelector } from '@hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/useHookApp';
 import React from 'react';
 import FilterBlock from './FilterBlock';
-import { IAvailableFilters } from '@interfaces/IAvailableFilters';
 import { setOpenFilterBar } from '@reduxConfig/feature/filterBar/filterBarSlice';
-import { Filter } from '@interfaces/MeliReq';
+import { IAvailableFilter, IFilter } from '@interfaces/IMeliReq';
 import FilterSelected from './FilterSelected';
 
 const FilterPanel = () => {
   const { availableFilters, filterSelected } = useAppSelector(
-    (state) => state.meli
+    (state) => state.productListSlice
   );
   const dispatch = useAppDispatch();
 
@@ -27,7 +26,7 @@ const FilterPanel = () => {
       <div className='grid grid-flow-row mb-2 w-fit'>
         <h2 className='mb-2 text-lg font-bold'>Filtro seleccionado(s):</h2>
         <div className='flex flex-wrap w-full gap-2'>
-          {filterSelected.map((filter: Filter) => (
+          {filterSelected.map((filter: IFilter) => (
             <FilterSelected
               key={filter.id}
               filter={filter}
@@ -37,7 +36,7 @@ const FilterPanel = () => {
         </div>
       </div>
       <h2 className='mb-2 text-lg font-bold'>Filtrar por:</h2>
-      {availableFilters?.map((option: IAvailableFilters) => (
+      {availableFilters?.map((option: IAvailableFilter) => (
         <FilterBlock option={option} key={option.id} />
       ))}
     </div>

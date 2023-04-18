@@ -1,15 +1,14 @@
-import Price from '@component/share/Price';
-import { IProductInfo } from '@interfaces/IProductInfo';
+import Price from '@components/share/Price';
+import { useAppSelector } from '@hooks/useHookApp';
 import Image from 'next/image';
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
-interface Props {
-  product: IProductInfo;
-}
-
-const ProductInfo = ({ product }: Props) => {
-  const shippingClasses = product.shipping.free_shipping
+const ProductInfo = () => {
+  const { selectedProductInfo } = useAppSelector(
+    (state) => state.productInfoSlice
+  );
+  const shippingClasses = selectedProductInfo?.shipping.free_shipping
     ? 'bg-secondary text-white'
     : '';
 
@@ -18,8 +17,8 @@ const ProductInfo = ({ product }: Props) => {
       <div className='grid grid-flow-row grid-cols-1 gap-4 mx-auto md:pt-10 md:grid-cols-2'>
         <div className='flex justify-center w-full h-full md:mb-0'>
           <Image
-            src={`https://http2.mlstatic.com/D_NQ_NP_932002-${product.thumbnail_id}-V.webp`}
-            alt={product.title}
+            src={`https://http2.mlstatic.com/D_NQ_NP_932002-${selectedProductInfo?.thumbnail_id}-V.webp`}
+            alt={selectedProductInfo?.title}
             className='object-contain w-3/4'
             loading='lazy'
             width={250}
@@ -28,7 +27,7 @@ const ProductInfo = ({ product }: Props) => {
         </div>
         <div>
           <h1 className='mb-2 text-2xl font-bold md:text-3xl'>
-            {product.title}
+            {selectedProductInfo?.title}
           </h1>
           <div className='flex items-center mb-4'>
             <FaStar className='mr-1 text-lg text-yellow-500 md:text-2xl' />
@@ -38,7 +37,10 @@ const ProductInfo = ({ product }: Props) => {
             <FaStar className='mr-1 text-lg text-gray-400 md:text-2xl' />
             <span className='text-gray-500'>(34 reseñas)</span>
           </div>
-          <Price originalPrice={product.original_price} price={product.price} />
+          <Price
+            originalPrice={selectedProductInfo?.original_price}
+            price={selectedProductInfo?.price}
+          />
           <span
             className={`grid grid-rows-1 rounded w-fit px-2 items-baseline ${shippingClasses}`}
           >
