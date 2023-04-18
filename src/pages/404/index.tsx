@@ -7,7 +7,7 @@ function Custom404() {
         className='relative w-full h-full bg-center bg-no-repeat bg-contain -left-5'
         style={{ backgroundImage: "url('/notFound.jpg')" }}
       ></div>
-      <Link href='/' legacyBehavior>
+      <Link href='/'>
         <span className='absolute px-4 py-2 font-bold text-white rounded bg-primary hover:bg-secondary'>
           Volver a la página de inicio
         </span>

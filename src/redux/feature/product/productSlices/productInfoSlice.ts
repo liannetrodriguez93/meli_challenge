@@ -10,7 +10,7 @@ import {
 import { IProductInfo } from '@interfaces/IProductInfo';
 import { IProductDetail } from '../../../../interfaces/IProductDetail';
 
-export interface MeliState {
+export interface ProductInfoState {
   loading: boolean;
   isOpenModal: boolean;
   selectedProductInfo: IProductInfo | null;
@@ -18,7 +18,7 @@ export interface MeliState {
   error: string | null;
 }
 
-const initialState: MeliState = {
+const initialState: ProductInfoState = {
   loading: true,
   isOpenModal: false,
   selectedProductInfo: null,

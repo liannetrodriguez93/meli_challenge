@@ -11,7 +11,7 @@ import {
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProductList } from '../productThunk/meliThunk';
 
-export interface MeliState {
+export interface ProductListState {
   loading: boolean;
   products: IResult[];
   sortSelected: ISort | null;
@@ -22,7 +22,7 @@ export interface MeliState {
   error: string | null;
 }
 
-const initialState: MeliState = {
+const initialState: ProductListState = {
   loading: true,
   products: [],
   sortSelected: null,
@@ -47,7 +47,7 @@ export const productListSlice = createSlice({
         (state, action: PayloadAction<IMeliReq>) => {
           state.loading = false;
           state.error = null;
-          state.products = action.payload.results;
+          state.products = [];
           state.filterSelected = action.payload.filters;
           state.availableFilters = action.payload.available_filters;
           state.sortSelected = action.payload.sort;
