@@ -44,6 +44,7 @@ export const productInfoSlice = createSlice({
         (state, action: PayloadAction<IProductInfo>) => {
           state.selectedProductInfo = action.payload;
           state.loading = false;
+          state.error = null;
         }
       )
       .addCase(fetchProductInfo.rejected, (state, action) => {
@@ -55,6 +56,7 @@ export const productInfoSlice = createSlice({
         (state, action: PayloadAction<IProductDetail>) => {
           state.selectedProductDetail = action.payload;
           state.loading = false;
+          state.error = null;
         }
       )
       .addCase(fetchProductDetail.rejected, (state, action) => {

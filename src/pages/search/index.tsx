@@ -6,6 +6,7 @@ import SearchResults from '@components/search/SearchResult';
 import Loader from '@components/share/Loader';
 import { useRouter } from 'next/router';
 import { fetchProductList } from '@reduxConfig/feature/product/productThunk/meliThunk';
+import ErrorPage from '@components/share/ErrorPage';
 
 const ProductList = () => {
   const { loading, error } = useAppSelector((state) => state.productListSlice);
@@ -22,7 +23,7 @@ const ProductList = () => {
   if (loading) {
     return <Loader loading={loading} />;
   } else if (error) {
-    return <></>;
+    return <ErrorPage />;
   }
 
   return <SearchResults />;
