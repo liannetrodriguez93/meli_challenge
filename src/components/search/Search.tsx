@@ -3,7 +3,7 @@
 import useSearchProduct from '@hooks/useSearchProduct';
 
 const Search = () => {
-  const { query, handleSetQuery, handleSubmit, handleKeyDown } =
+  const { queryValue, handleSetQuery, handleSubmit, handleKeyDown } =
     useSearchProduct();
 
   return (
@@ -16,11 +16,16 @@ const Search = () => {
           placeholder='Search'
           aria-label='Search'
           aria-describedby='button-search'
-          value={query}
+          value={queryValue}
           onChange={(event) => handleSetQuery(event.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <button className='col-span-1 px-3 py-1 text-white rounded-md bg-primary'>
+        <button
+          className={`col-span-1 px-3 py-1 text-white rounded-md bg-primary ${
+            queryValue === '' ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+          disabled={queryValue === ''}
+        >
           Buscar
         </button>
       </div>

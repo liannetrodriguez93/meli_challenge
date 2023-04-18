@@ -16,10 +16,12 @@ const useSearchProduct = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    router.push({
-      pathname: '/search',
-      query: { q: queryValue },
-    });
+    if (queryValue !== '') {
+      router.push({
+        pathname: '/search',
+        query: { q: queryValue },
+      });
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
