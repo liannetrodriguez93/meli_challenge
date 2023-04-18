@@ -1,7 +1,7 @@
-import Header from '@component/Header';
-import LayoutRoot from '@component/Layout';
-import '@styles/globals.css';
+import Header from '@components/Header';
+import LayoutRoot from '@components/Layout';
 import type { AppProps } from 'next/app';
+import '@styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </main>
         </div>
         <footer>
-          <h1>footer</h1>
+          <span>footer</span>
         </footer>
       </div>
     </LayoutRoot>

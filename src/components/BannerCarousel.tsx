@@ -11,39 +11,41 @@ const BannerCarousel = () => {
   const [activeImage, setActiveImage] = useState(0);
 
   return (
-    <div className='relative'>
-      <div className='absolute inset-0'>
+    <div
+      id='default-carousel'
+      className='relative w-full'
+      data-carousel='slide'
+    >
+      <div className='relative h-32 overflow-hidden md:h-72'>
         {images.map((image, index) => (
-          <div
-            key={index}
-            className={`${
-              index === activeImage ? 'opacity-100' : 'opacity-0'
-            } transition-opacity duration-1000 ease-out absolute inset-0 w-full h-full`}
-          >
+          <div key={`image-${index}`} data-carousel-item>
             <Image
               src={image}
               alt={`Banner image ${index + 1}`}
+              className={`${
+                index === activeImage ? 'opacity-100' : 'opacity-0'
+              } transition-opacity duration-1000 ease-out absolute inset-0 w-full object-cover`}
               quality={100}
               fill
               priority
-              style={{ objectFit: 'contain' }}
             />
           </div>
         ))}
       </div>
-      <div className='absolute bottom-0 w-full'>
-        <ul className='flex justify-center'>
-          {images.map((image, index) => (
-            <li key={index} className='mr-3'>
-              <button
-                className={`${
-                  index === activeImage ? 'bg-white' : 'bg-gray-500'
-                } w-4 h-4 rounded-full focus:outline-none transition-colors duration-200`}
-                onClick={() => setActiveImage(index)}
-              />
-            </li>
-          ))}
-        </ul>
+      <div className='absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2'>
+        {images.map((_, index) => (
+          <button
+            key={`button-${index}`}
+            type='button'
+            className={`${
+              index === activeImage ? 'bg-primary' : 'bg-gray-500'
+            } w-3 h-3 rounded-full sm:w-4 sm:h-4 focus:outline-none transition-colors duration-200`}
+            aria-current='false'
+            aria-label='Slide 2'
+            data-carousel-slide-to={index}
+            onClick={() => setActiveImage(index)}
+          ></button>
+        ))}
       </div>
     </div>
   );

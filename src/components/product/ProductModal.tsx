@@ -9,9 +9,7 @@ import Loader from '@components/share/Loader';
 
 const ProductModal = () => {
   const dispatch = useAppDispatch();
-  const { isOpenModal, loading } = useAppSelector(
-    (state) => state.productInfoSlice
-  );
+  const { isOpenModal, loading } = useAppSelector((state) => state.productInfo);
 
   const handleViewClick = () => {
     dispatch(setIsOpenModal());

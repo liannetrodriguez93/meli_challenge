@@ -8,7 +8,7 @@ import SortBy from '@components/search/SortBy';
 const FilterHeader = () => {
   const { query } = useRouter();
   const { open } = useAppSelector((state) => state.filterBar);
-  const { pagin } = useAppSelector((state) => state.productListSlice);
+  const { paging } = useAppSelector((state) => state.productList);
   const dispatch = useAppDispatch();
 
   const handleOpenFilterBar = () => {
@@ -16,12 +16,12 @@ const FilterHeader = () => {
   };
 
   const initialElement =
-    pagin.offset === 1 ? 1 : (pagin.offset - 1) * pagin.limit + 1;
+    paging.offset === 1 ? 1 : (paging.offset - 1) * paging.limit + 1;
   const finalElement =
-    pagin.offset * pagin.limit > pagin.total
-      ? pagin.total
-      : pagin.offset * pagin.limit;
-  const total = finalElement === pagin.total ? '' : `de ${pagin.total}`;
+    paging.offset * paging.limit > paging.total
+      ? paging.total
+      : paging.offset * paging.limit;
+  const total = finalElement === paging.total ? '' : `de ${paging.total}`;
   const headerText = `${initialElement} - ${finalElement} ${total} resultados para \"${query.q}\"`;
 
   return (

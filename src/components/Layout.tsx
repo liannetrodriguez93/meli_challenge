@@ -23,7 +23,7 @@ const LayoutRoot = ({ children, title }: Props) => {
             type='image/x-icon'
           />
         </Head>
-        {children}
+        <div id='root'>{children}</div>
       </Providers>
     </>
   );

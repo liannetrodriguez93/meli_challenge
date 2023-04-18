@@ -9,7 +9,7 @@ import useGetWindowSize from '@hooks/useGetWindowSize';
 import ProductNotFound from '@components/product/ProductNotFound';
 
 function SearchResults() {
-  const { products } = useAppSelector((state) => state.productListSlice);
+  const { products } = useAppSelector((state) => state.productList);
   const [sideBarClass, setSideBarClass] = useState('initialState');
   const { screenSize } = useGetWindowSize();
   const { open } = useAppSelector((state) => state.filterBar);
@@ -27,7 +27,7 @@ function SearchResults() {
   return (
     <>
       {products?.length > 0 ? (
-        <div className='grid grid-flow-row h-min'>
+        <div className='grid grid-flow-row h-min' data-testid='search-results'>
           <FilterHeader />
           <div className='grid grid-flow-col grid-cols-5 md:grid-cols-6'>
             <div

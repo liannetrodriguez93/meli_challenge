@@ -8,7 +8,7 @@ import SortByItem from './SortByItem';
 const SortBy = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { sortSelected, availableSorts } = useAppSelector(
-    (state) => state.productListSlice
+    (state) => state.productList
   );
 
   return (

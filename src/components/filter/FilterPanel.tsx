@@ -7,7 +7,7 @@ import FilterSelected from './FilterSelected';
 
 const FilterPanel = () => {
   const { availableFilters, filterSelected } = useAppSelector(
-    (state) => state.productListSlice
+    (state) => state.productList
   );
   const dispatch = useAppDispatch();
 

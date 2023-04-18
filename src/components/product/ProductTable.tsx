@@ -3,9 +3,7 @@ import { IAttribute } from '@interfaces/IProductInfo';
 import React from 'react';
 
 const ProductTableAtributes = () => {
-  const { selectedProductInfo } = useAppSelector(
-    (state) => state.productInfoSlice
-  );
+  const { selectedProductInfo } = useAppSelector((state) => state.productInfo);
 
   return (
     <div className='grid grid-flow-row p-4'>

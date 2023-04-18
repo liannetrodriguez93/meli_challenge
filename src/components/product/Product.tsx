@@ -16,9 +16,7 @@ interface Props {
 }
 
 const Product = ({ product }: Props) => {
-  const { selectedProductInfo } = useAppSelector(
-    (state) => state.productInfoSlice
-  );
+  const { selectedProductInfo } = useAppSelector((state) => state.productInfo);
   const dispatch = useAppDispatch();
 
   const handleViewClick = () => {

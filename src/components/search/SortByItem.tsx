@@ -9,7 +9,7 @@ interface Props {
 
 const SortByItem = ({ sortItem }: Props) => {
   const { asPath } = useRouter();
-  const { sortSelected } = useAppSelector((state) => state.productListSlice);
+  const { sortSelected } = useAppSelector((state) => state.productList);
 
   const splitedQueries = asPath
     .split('&')

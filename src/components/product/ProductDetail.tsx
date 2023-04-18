@@ -2,7 +2,7 @@ import { useAppSelector } from '@hooks/useHookApp';
 
 function ProductDetail() {
   const { selectedProductDetail } = useAppSelector(
-    (state) => state.productInfoSlice
+    (state) => state.productInfo
   );
 
   return (

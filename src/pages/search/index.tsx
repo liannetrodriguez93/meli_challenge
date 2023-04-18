@@ -8,8 +8,8 @@ import { useRouter } from 'next/router';
 import { fetchProductList } from '@reduxConfig/feature/product/productThunk/meliThunk';
 import ErrorPage from '@components/share/ErrorPage';
 
-const ProductList = () => {
-  const { loading, error } = useAppSelector((state) => state.productListSlice);
+const ProductListResult = () => {
+  const { loading, error } = useAppSelector((state) => state.productList);
   const { query, asPath } = useRouter();
   const dispatch = useAppDispatch();
 
@@ -29,4 +29,4 @@ const ProductList = () => {
   return <SearchResults />;
 };
 
-export default ProductList;
+export default ProductListResult;

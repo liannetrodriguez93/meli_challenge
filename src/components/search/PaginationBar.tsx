@@ -7,15 +7,15 @@ import { useRouter } from 'next/router';
 
 const PaginationBar = () => {
   const { asPath } = useRouter();
-  const { pagin } = useAppSelector((state) => state.productListSlice);
+  const { paging } = useAppSelector((state) => state.productList);
 
-  const totalPage = Math.ceil(pagin.total / pagin.limit);
-  const paginLength = totalPage > 5 ? 5 : totalPage;
-  let startPage = pagin.offset > 2 ? pagin.offset - 2 : 1;
-  if (pagin.offset === totalPage) {
+  const totalPage = Math.ceil(paging.total / paging.limit);
+  const pagingLength = totalPage > 5 ? 5 : totalPage;
+  let startPage = paging.offset > 2 ? paging.offset - 2 : 1;
+  if (paging.offset === totalPage) {
     startPage = totalPage > 5 ? totalPage - 5 : 1;
   }
-  const pages = Array.from({ length: paginLength }, (_, i) => i + startPage);
+  const pages = Array.from({ length: pagingLength }, (_, i) => i + startPage);
 
   const newQuery = asPath
     .split('&')
@@ -24,8 +24,8 @@ const PaginationBar = () => {
 
   return (
     <nav className='flex items-center justify-center mt-4'>
-      <Link href={`${newQuery}&offset=${pagin.offset - 1}`}>
-        <SquareIconButton disabled={pagin.offset - 1 === 0}>
+      <Link href={`${newQuery}&offset=${paging.offset - 1}`}>
+        <SquareIconButton disabled={paging.offset - 1 === 0}>
           <FaChevronLeft />
         </SquareIconButton>
       </Link>
@@ -35,7 +35,7 @@ const PaginationBar = () => {
             <Link href={`${newQuery}&offset=${page}`}>
               <span
                 className={`block p-2 w-10 text-center border border-gray-300 text-gray-500 hover:bg-background hover:text-gray-700 
-                ${page === pagin?.offset ? 'bg-secondary text-white' : ''}`}
+                ${page === paging?.offset ? 'bg-secondary text-white' : ''}`}
               >
                 <div>{page}</div>
               </span>
@@ -49,8 +49,8 @@ const PaginationBar = () => {
       <div className='block w-10 p-2 text-center text-gray-500 border border-gray-300 '>
         {totalPage}
       </div> */}
-      <Link href={`${newQuery}&offset=${pagin.offset + 1}`}>
-        <SquareIconButton disabled={pagin.offset === totalPage}>
+      <Link href={`${newQuery}&offset=${paging.offset + 1}`}>
+        <SquareIconButton disabled={paging.offset === totalPage}>
           <FaChevronRight />
         </SquareIconButton>
       </Link>

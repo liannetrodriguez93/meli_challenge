@@ -19,8 +19,8 @@ const persistConfig: PersistConfig<RootState> = {
 };
 
 const rootReducer = combineReducers({
-  productListSlice: productListSlice,
-  productInfoSlice: productInfoSlice,
+  productList: productListSlice,
+  productInfo: productInfoSlice,
   filterBar: filterBarSlice,
 });
 

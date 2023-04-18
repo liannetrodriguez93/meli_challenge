@@ -18,7 +18,7 @@ export interface ProductListState {
   filterSelected: IFilter[];
   availableSorts: ISort[];
   availableFilters: IAvailableFilter[];
-  pagin: IPaging | null;
+  paging: IPaging | null;
   error: string | null;
 }
 
@@ -29,7 +29,7 @@ const initialState: ProductListState = {
   filterSelected: [],
   availableSorts: [],
   availableFilters: [],
-  pagin: null,
+  paging: null,
   error: null,
 };
 
@@ -52,7 +52,7 @@ export const productListSlice = createSlice({
           state.availableFilters = action.payload.available_filters;
           state.sortSelected = action.payload.sort;
           state.availableSorts = action.payload.available_sorts;
-          state.pagin = action.payload.paging;
+          state.paging = action.payload.paging;
         }
       )
       .addCase(fetchProductList.rejected, (state, action) => {

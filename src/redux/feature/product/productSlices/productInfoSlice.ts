@@ -1,9 +1,7 @@
 'use client';
 
-import { IMeliReq } from '@interfaces/IMeliReq';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  fetchProductList,
   fetchProductInfo,
   fetchProductDetail,
 } from '../productThunk/meliThunk';

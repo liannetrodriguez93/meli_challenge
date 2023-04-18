@@ -5,9 +5,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const ProductInfo = () => {
-  const { selectedProductInfo } = useAppSelector(
-    (state) => state.productInfoSlice
-  );
+  const { selectedProductInfo } = useAppSelector((state) => state.productInfo);
   const shippingClasses = selectedProductInfo?.shipping.free_shipping
     ? 'bg-secondary text-white'
     : '';
