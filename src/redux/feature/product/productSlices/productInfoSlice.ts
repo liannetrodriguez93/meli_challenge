@@ -43,19 +43,23 @@ export const productInfoSlice = createSlice({
         fetchProductInfo.fulfilled,
         (state, action: PayloadAction<IProductInfo>) => {
           state.selectedProductInfo = action.payload;
+          state.loading = false;
         }
       )
       .addCase(fetchProductInfo.rejected, (state, action) => {
         state.error = action.error.message || 'Something went wrong.';
+        state.loading = false;
       })
       .addCase(
         fetchProductDetail.fulfilled,
         (state, action: PayloadAction<IProductDetail>) => {
           state.selectedProductDetail = action.payload;
+          state.loading = false;
         }
       )
       .addCase(fetchProductDetail.rejected, (state, action) => {
         state.error = action.error.message || 'Something went wrong.';
+        state.loading = false;
       });
   },
 });

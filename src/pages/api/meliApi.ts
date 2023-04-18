@@ -6,7 +6,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<IMeliReq>
 ) {
-  console.log(req);
   const response = await fetch(
     'https://api.mercadolibre.com/sites/MLA/search?q=:mesa'
   );

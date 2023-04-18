@@ -1,5 +1,5 @@
-import BannerCarousel from '@component/BannerCarousel';
-import ProductList from '@component/product/ProductList';
+import BannerCarousel from '@components/BannerCarousel';
+import ProductList from '@components/product/ProductList';
 import { IMeliReq } from '@interfaces/IMeliReq';
 
 interface MeliRes extends IMeliReq {

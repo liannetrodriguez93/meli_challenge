@@ -5,10 +5,9 @@ import React from 'react';
 
 interface Props {
   filter: IFilter;
-  onRemove: () => void;
 }
 
-const FilterSelected = ({ filter, onRemove }: Props) => {
+const FilterSelected = ({ filter }: Props) => {
   const { asPath } = useRouter();
 
   const newQuery = asPath
@@ -22,10 +21,7 @@ const FilterSelected = ({ filter, onRemove }: Props) => {
         {filter.name}
       </span>
       <Link href={newQuery}>
-        <button
-          onClick={onRemove}
-          className='text-sm text-white sm:text-base hover:text-black'
-        >
+        <button className='text-sm text-white sm:text-base hover:text-black'>
           X
         </button>
       </Link>

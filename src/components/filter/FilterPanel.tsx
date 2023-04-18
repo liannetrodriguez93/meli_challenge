@@ -27,11 +27,7 @@ const FilterPanel = () => {
         <h2 className='mb-2 text-lg font-bold'>Filtro seleccionado(s):</h2>
         <div className='flex flex-wrap w-full gap-2'>
           {filterSelected.map((filter: IFilter) => (
-            <FilterSelected
-              key={filter.id}
-              filter={filter}
-              onRemove={() => console.log('remove selected filter')}
-            />
+            <FilterSelected key={filter.id} filter={filter} />
           ))}
         </div>
       </div>

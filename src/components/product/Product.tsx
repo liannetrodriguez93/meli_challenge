@@ -4,7 +4,7 @@ import React from 'react';
 import { FaHeart, FaCartPlus, FaEye } from 'react-icons/fa';
 import SquareIconButton from '../share/SquareIconButton';
 import Price from '@components/share/Price';
-import { useAppDispatch } from '@hooks/useHookApp';
+import { useAppDispatch, useAppSelector } from '@hooks/useHookApp';
 import {
   fetchProductInfo,
   fetchProductDetail,
@@ -16,11 +16,16 @@ interface Props {
 }
 
 const Product = ({ product }: Props) => {
+  const { selectedProductInfo } = useAppSelector(
+    (state) => state.productInfoSlice
+  );
   const dispatch = useAppDispatch();
 
   const handleViewClick = () => {
-    dispatch(fetchProductInfo(product.id));
-    dispatch(fetchProductDetail(product.id));
+    if (selectedProductInfo?.id !== product.id) {
+      dispatch(fetchProductInfo(product.id));
+      dispatch(fetchProductDetail(product.id));
+    }
     dispatch(setIsOpenModal());
   };
 

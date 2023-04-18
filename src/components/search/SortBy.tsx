@@ -3,17 +3,13 @@ import { Popover, Transition } from '@headlessui/react';
 import { FaChevronDown } from 'react-icons/fa';
 import { useAppSelector } from '@hooks/useHookApp';
 import { ISort } from '@interfaces/IMeliReq';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import SortByItem from './SortByItem';
 
 const SortBy = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { asPath } = useRouter();
   const { sortSelected, availableSorts } = useAppSelector(
     (state) => state.productListSlice
   );
-
-  console.log(sortSelected);
 
   return (
     <Popover className='relative'>
@@ -49,35 +45,9 @@ const SortBy = () => {
               className='absolute right-0 z-10 px-4 mt-1 origin-top-right bg-white rounded-md shadow-lg w-fit ring-1 ring-black ring-opacity-5 focus:outline-none'
             >
               <div className='w-full'>
-                {availableSorts.map((sort: ISort) => {
-                  const splitedQueries = asPath
-                    .split('&')
-                    .filter(
-                      (query) =>
-                        !query.includes('sort') && !query.includes('offset')
-                    )
-                    .join('&');
-                  console.log(sortSelected.id);
-                  console.log(sort.id);
-                  console.log(sortSelected.id === sort.id);
-                  return (
-                    <Link href={`${splitedQueries}&sort=${sort.id}`}>
-                      <h2
-                        className={`w-full m-2 text-black hover:text-primary ${
-                          sortSelected.id === sort.id ? 'bg-secondary' : ''
-                        }`}
-                      >
-                        {sort.name}
-                      </h2>
-                    </Link>
-                  );
-                })}
-                {/* <div className='grid grid-cols-2 p-4 text-black'>
-                  <a href='/analytics'>Analytics</a>
-                  <a href='/engagement'>Engagement</a>
-                  <a href='/security'>Security</a>
-                  <a href='/integrations'>Integrations</a>
-                </div> */}
+                {availableSorts.map((sort: ISort) => (
+                  <SortByItem key={sort.id} sortItem={sort} />
+                ))}
               </div>
             </Popover.Panel>
           </Transition>

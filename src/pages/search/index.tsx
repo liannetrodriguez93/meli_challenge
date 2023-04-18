@@ -9,14 +9,10 @@ import FilterHeader from '@components/filter/FilterHeader';
 import Loader from '@components/share/Loader';
 import { useRouter } from 'next/router';
 import { fetchProductList } from '@reduxConfig/feature/product/productThunk/meliThunk';
-import ProductLayout from '@components/product/ProductModal';
-import ProductInfo from '@components/product/ProductInfo';
-import ProductTableAtributes from '@components/product/ProductTable';
-import ProductDetail from '@components/product/ProductDetail';
+import ProductModal from '@components/product/ProductModal';
 
 const ProductList = () => {
   const { loading } = useAppSelector((state) => state.productListSlice);
-  const { isOpenModal } = useAppSelector((state) => state.productInfoSlice);
   const { open } = useAppSelector((state) => state.filterBar);
   const [sideBarClass, setSideBarClass] = useState('initialState');
   const { screenSize } = useGetWindowSize();
@@ -57,15 +53,7 @@ const ProductList = () => {
               <SearchResults />
             </div>
           </div>
-          {isOpenModal && (
-            <ProductLayout>
-              <ProductInfo />
-              <div className='text-gray-700 bg-gray-100 rounded shadow '>
-                <ProductTableAtributes />
-                <ProductDetail />
-              </div>
-            </ProductLayout>
-          )}
+          <ProductModal />
         </div>
       )}
     </>

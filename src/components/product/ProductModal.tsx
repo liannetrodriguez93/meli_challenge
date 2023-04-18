@@ -1,48 +1,36 @@
-import React from 'react';
+import ModalLayout from '@components/share/ModalLayout';
 import { useAppDispatch, useAppSelector } from '@hooks/useHookApp';
-import useGetWindowSize from '@hooks/useGetWindowSize';
-import Modal from 'react-modal';
 import { setIsOpenModal } from '@reduxConfig/feature/product/productSlices/productInfoSlice';
+import React from 'react';
+import ProductInfo from './ProductInfo';
+import ProductTableAtributes from './ProductTable';
+import ProductDetail from './ProductDetail';
+import Loader from '@components/share/Loader';
 
-Modal.setAppElement('#root');
-
-const ProductLayout = ({ children }: any) => {
-  const { screenSize } = useGetWindowSize();
+const ProductModal = () => {
   const dispatch = useAppDispatch();
-  const { isOpenModal } = useAppSelector((state) => state.productInfoSlice);
+  const { isOpenModal, loading } = useAppSelector(
+    (state) => state.productInfoSlice
+  );
 
   const handleViewClick = () => {
     dispatch(setIsOpenModal());
   };
 
-  const customStyles = {
-    content: {
-      inset: 'auto',
-      right: 'auto',
-      width: screenSize.width >= 1024 ? '60%' : '80%',
-      height: '80%',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform:
-        screenSize.width >= 1024
-          ? 'translate(30%, 15%)'
-          : 'translate(12%, 12%)',
-    },
-  };
-
   return (
     <>
-      <Modal isOpen={isOpenModal} style={customStyles}>
-        {children}
-        <button
-          className='absolute px-3 py-1 text-white rounded-full bg-primary right-2 top-2'
-          onClick={handleViewClick}
-        >
-          X
-        </button>
-      </Modal>
+      {isOpenModal && (
+        <ModalLayout open={isOpenModal} onClick={handleViewClick}>
+          {loading && <Loader loading={loading} />}
+          <ProductInfo />
+          <div className='text-gray-700 bg-gray-100 rounded shadow '>
+            <ProductTableAtributes />
+            <ProductDetail />
+          </div>
+        </ModalLayout>
+      )}
     </>
   );
 };
 
-export default ProductLayout;
+export default ProductModal;
