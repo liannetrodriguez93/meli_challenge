@@ -12,6 +12,8 @@ import {
   mockStoreErrorFetchProductList,
   mockStoreFetchProductInfo,
   mockStoreFetchProductList,
+  mockStoreInitialFetchProductInfo,
+  mockStoreInitialFetchProductList,
 } from '../../../../__mocks__/fetchProductMock';
 import configureMockStore from 'redux-mock-store';
 import { mockStoreLoadFetchProductList } from '../../../../__mocks__/fetchProductMock';
@@ -26,6 +28,7 @@ jest.mock('@hooks/useHookApp', () => ({
 }));
 
 jest.mock('@reduxConfig/feature/product/productThunk/meliThunk');
+
 jest.mock('react-modal', () => {
   const originalModal = jest.requireActual('react-modal');
   return {
@@ -40,9 +43,8 @@ describe('ProductListResult component', () => {
   let store;
   let mockUseRouter: any;
 
-  beforeEach(() => jest.clearAllMocks());
-
-  it('test_query_object_has_keys', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
     mockRouter.push('/search?q=test');
 
     mockUseRouter = jest.fn(() => ({
@@ -51,11 +53,13 @@ describe('ProductListResult component', () => {
     }));
 
     jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
+  });
 
+  it('test_dispatch_has_keys', () => {
     store = mockStore({
-      productList: mockStoreFetchProductList,
+      productList: mockStoreInitialFetchProductList,
       filterBar: mockFilterBarClose,
-      productInfo: mockStoreFetchProductInfo,
+      productInfo: mockStoreInitialFetchProductInfo,
     });
 
     render(
@@ -67,20 +71,35 @@ describe('ProductListResult component', () => {
     expect(mockDispatch).toHaveBeenCalledWith(fetchProductList('q=test'));
   });
 
-  it('test_render_searchResult_when_loading_false_error_false', () => {
-    mockRouter.push('/search?q=test');
+  it('test_dont_dispatch_when_no_keys', () => {
+    mockRouter.push('/search');
 
     mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
+      query: {},
+      asPath: '/search',
     }));
 
     jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
+    store = mockStore({
+      productList: mockStoreInitialFetchProductList,
+      filterBar: mockFilterBarClose,
+      productInfo: mockStoreInitialFetchProductInfo,
+    });
 
+    render(
+      <Provider store={store}>
+        <ProductListResult />
+      </Provider>
+    );
+
+    expect(mockDispatch).not.toHaveBeenCalledWith(fetchProductList);
+  });
+
+  it('test_render_searchResult_when_loading_false_error_false', () => {
     store = mockStore({
       productList: mockStoreFetchProductList,
       filterBar: mockFilterBarClose,
-      productInfo: mockStoreFetchProductInfo,
+      productInfo: mockStoreInitialFetchProductInfo,
     });
 
     const { queryByTestId } = render(
@@ -91,21 +110,11 @@ describe('ProductListResult component', () => {
     expect(queryByTestId('search-results')).toBeInTheDocument();
   });
 
-  // Tests that the function renders ErrorPage component when fetchProductList returns an error.
   it('test_render_ErrorPage_when_error', async () => {
-    mockRouter.push('/search?q=test');
-
-    mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
-
     store = mockStore({
       productList: mockStoreErrorFetchProductList,
       filterBar: mockFilterBarClose,
-      productInfo: mockStoreFetchProductInfo,
+      productInfo: mockStoreInitialFetchProductInfo,
     });
 
     const { queryByTestId } = render(
@@ -117,29 +126,19 @@ describe('ProductListResult component', () => {
     expect(queryByTestId('error-page')).toBeInTheDocument();
   });
 
-  //   // Tests that the function renders Loader component when loading is true.
-  //   it('test_loading_true', () => {
-  //     const mockUseRouter = jest.fn(() => ({ query: {}, asPath: '/test' }));
-  //     const mockUseAppSelector = jest.fn(() => ({ loading: true, error: false }));
-  //     jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
-  //     jest.mock('@hooks/useHookApp', () => ({
-  //       useAppDispatch: jest.fn(),
-  //       useAppSelector: mockUseAppSelector,
-  //     }));
-  //     const { queryByTestId } = render(<ProductListResult />);
-  //     expect(queryByTestId('loader')).toBeInTheDocument();
-  //   });
-  //   // Tests that the function does not dispatch fetchProductList when the query object is empty.
-  //   it('test_empty_query_object', () => {
-  //     const mockDispatch = jest.fn();
-  //     const mockUseRouter = jest.fn(() => ({ query: {}, asPath: '/search' }));
-  //     const mockUseAppSelector = jest.fn(() => mockStoreFetchProductList);
-  //     jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
-  //     jest.mock('@hooks/useHookApp', () => ({
-  //       useAppDispatch: () => mockDispatch,
-  //       useAppSelector: mockUseAppSelector,
-  //     }));
-  //     render(<ProductListResult />);
-  //     expect(mockDispatch).not.toHaveBeenCalled();
-  //   });
+  it('test_loading_true', () => {
+    store = mockStore({
+      productList: mockStoreLoadFetchProductList,
+      filterBar: mockFilterBarClose,
+      productInfo: mockStoreInitialFetchProductInfo,
+    });
+
+    const { queryByTestId } = render(
+      <Provider store={store}>
+        <ProductListResult />
+      </Provider>
+    );
+
+    expect(queryByTestId('loader')).toBeInTheDocument();
+  });
 });

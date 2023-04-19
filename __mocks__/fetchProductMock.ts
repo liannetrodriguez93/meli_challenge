@@ -1,3 +1,14 @@
+export const mockStoreInitialFetchProductList = {
+  loading: false,
+  products: [],
+  sortSelected: null,
+  filterSelected: [],
+  availableSorts: [],
+  availableFilters: [],
+  paging: null,
+  error: null,
+};
+
 export const mockStoreLoadFetchProductList = {
   loading: true,
   products: [],
@@ -1030,6 +1041,14 @@ export const mockFilterBarOpen = {
 
 export const mockFilterBarClose = {
   open: false,
+};
+
+export const mockStoreInitialFetchProductInfo = {
+  loading: false,
+  isOpenModal: false,
+  selectedProductInfo: null,
+  selectedProductDetail: null,
+  error: null,
 };
 
 export const mockStoreLoadFetchProductInfo = {
