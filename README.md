@@ -1,38 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Meli Challenge
 
-## Getting Started
+La aplicación se destaca por su enfoque centrado en el usuario y el uso de tecnologías de vanguardia como Next.js, Tailwind, Redux Toolkit y Thunks, lo que permite una experiencia de usuario excepcional y un flujo de desarrollo eficiente. La pantalla principal cuenta con un carusel de imágenes, una bienvenida y una barra de búsqueda para encontrar productos fácilmente. La lista de productos ofrece opciones de filtrado y ordenado, y los detalles del producto están disponibles para una mejor comprensión del artículo. En resumen, la aplicación es una solución completa para la compra en línea de productos, que se enfoca en ofrecer una experiencia de usuario excepcional en cada etapa del proceso.
 
-First, run the development server:
+## Tecnologías utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Next.js
+- Tailwind
+- Redux Toolkit
+- Thunks
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Principales retos
+A pesar de que no tenía experiencia previa con Next.js, trabajé duro para familiarizarme con su sintaxis y estructura. Aunque fue un desafío, la experiencia fue enriquecedora y me permitió adquirir habilidades valiosas que pueden ser útiles en futuros proyectos. En resumen, trabajar con Next.js fue un desafío gratificante.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Funcionalidades principales
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Carusel de imágenes en la pantalla principal
+- Barra de búsqueda para encontrar productos
+- Lista de productos con opciones de filtrado y ordenado
+- Vista detallada del producto
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Diseño responsive
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+La aplicación ha sido diseñada con un enfoque centrado en el usuario y en la usabilidad en diferentes dispositivos y pantallas. El diseño responsive se adapta a diferentes tamaños de pantalla y resoluciones, lo que garantiza una experiencia de usuario consistente y sin problemas en cualquier dispositivo.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Equipo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Liannet Yisel Rodriguez Santiesteban
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Licencia
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[MIT](https://choosealicense.com/licenses/mit/)
