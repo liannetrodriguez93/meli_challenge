@@ -5,8 +5,12 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import SquareIconButton from '../share/SquareIconButton';
 import { useRouter } from 'next/router';
 
+interface OnClickValue {
+  value: 'left' | 'right';
+}
+
 const PaginationBar = () => {
-  const { asPath } = useRouter();
+  const router = useRouter();
   const { paging } = useAppSelector((state) => state.productList);
 
   const totalPage = Math.ceil(paging.total / paging.limit);
@@ -17,18 +21,29 @@ const PaginationBar = () => {
   }
   const pages = Array.from({ length: pagingLength }, (_, i) => i + startPage);
 
-  const newQuery = asPath
+  const newQuery = router.asPath
     .split('&')
     .filter((query) => !query.includes('offset'))
     .join('&');
 
+  const handleNextPagination = ({ value }: OnClickValue) => {
+    router.push({
+      pathname: '/search',
+      query: {
+        ...router.query,
+        offset: value === 'left' ? paging.offset - 1 : paging.offset + 1,
+      },
+    });
+  };
+
   return (
     <nav className='flex items-center justify-center mt-4'>
-      <Link href={`${newQuery}&offset=${paging.offset - 1}`}>
-        <SquareIconButton disabled={paging.offset - 1 === 0}>
-          <FaChevronLeft />
-        </SquareIconButton>
-      </Link>
+      <SquareIconButton
+        disabled={paging.offset - 1 === 0}
+        onClick={() => handleNextPagination({ value: 'left' })}
+      >
+        <FaChevronLeft />
+      </SquareIconButton>
       <ul className='grid grid-flow-col'>
         {pages.map((page) => (
           <li key={page}>
@@ -49,11 +64,12 @@ const PaginationBar = () => {
       <div className='block w-10 p-2 text-center text-gray-500 border border-gray-300 '>
         {totalPage}
       </div> */}
-      <Link href={`${newQuery}&offset=${paging.offset + 1}`}>
-        <SquareIconButton disabled={paging.offset === totalPage}>
-          <FaChevronRight />
-        </SquareIconButton>
-      </Link>
+      <SquareIconButton
+        disabled={paging.offset === totalPage}
+        onClick={() => handleNextPagination({ value: 'right' })}
+      >
+        <FaChevronRight />
+      </SquareIconButton>
     </nav>
   );
 };

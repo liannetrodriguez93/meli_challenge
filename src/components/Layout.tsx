@@ -1,4 +1,4 @@
-import Header from '@component/Header';
+import Header from '@components/Header';
 import Head from 'next/head';
 import React from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -23,7 +23,7 @@ const LayoutRoot = ({ children, title }: Props) => {
             type='image/x-icon'
           />
         </Head>
-        <div id='root'>{children}</div>
+        <div>{children}</div>
       </Providers>
     </>
   );

@@ -3,11 +3,17 @@ import { IconType } from 'react-icons/lib';
 
 interface Props {
   children: React.ReactElement<IconType>;
-  handleClick?: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 }
 
-const SquareIconButton = ({ children, handleClick, disabled }: Props) => {
+const SquareIconButton = ({ children, onClick, disabled }: Props) => {
+  const handleClick = () => {
+    if (!disabled && onClick) {
+      onClick();
+    }
+  };
+
   return (
     <button
       className={`flex items-center justify-center w-8 h-8 p-2 mx-2 text-white rounded bg-secondary hover:bg-primary hover:text-white ${

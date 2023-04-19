@@ -3,7 +3,10 @@ import React from 'react';
 
 const ErrorPage = () => {
   return (
-    <div className='grid items-center justify-center w-full h-full bg-gray-100'>
+    <div
+      className='grid items-center justify-center w-full h-full bg-gray-100'
+      data-testid='error-page'
+    >
       <div className='max-w-2xl mx-auto text-center'>
         <h1 className='mb-4 text-4xl font-bold text-red-600'>Error</h1>
         <p className='mb-8 text-xl text-gray-500'>

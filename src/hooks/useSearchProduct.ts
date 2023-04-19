@@ -12,7 +12,7 @@ const useSearchProduct = () => {
     setQueryValue(newQuery);
   }, [router.query]);
 
-  const handleSetQuery = (query: string) => setQueryValue(query);
+  const handleSetQuery = (query: string) => setQueryValue(query.trim());
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

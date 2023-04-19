@@ -41,7 +41,7 @@ const Product = ({ product }: Props) => {
           />
         </div>
         <div className='grid items-center w-full grid-flow-col col-span-3 grid-rows-3 h-min p4 md:col-span-5'>
-          <h5 className='h-16 text-sm font-medium sm:text-md line-clamp-3'>
+          <h5 className='h-16 text-sm font-medium sm:text-md line-clamp-3 sm:line-clamp-2'>
             {product.title}
           </h5>
           <div className='grid items-center h-20 grid-flow-row'>
@@ -56,7 +56,7 @@ const Product = ({ product }: Props) => {
             )}
           </div>
           <div className='grid grid-flow-col h-fit place-items-center'>
-            <SquareIconButton handleClick={handleViewClick}>
+            <SquareIconButton onClick={handleViewClick}>
               <FaEye />
             </SquareIconButton>
             <SquareIconButton>
