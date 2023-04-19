@@ -37,7 +37,11 @@ const FilterPanel = () => {
             )}
             <div className='flex flex-wrap w-full gap-2'>
               {filterSelected?.map((filter: IFilter) => (
-                <FilterSelected key={filter.id} filter={filter} />
+                <FilterSelected
+                  key={filter.id}
+                  id={filter.id}
+                  name={filter.name}
+                />
               ))}
             </div>
           </div>

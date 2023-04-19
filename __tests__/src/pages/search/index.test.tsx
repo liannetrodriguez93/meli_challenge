@@ -41,13 +41,6 @@ describe('ProductListResult component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockRouter.push('/search?q=test');
-
-    mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
   });
 
   it('test_dispatch_has_keys', () => {
@@ -69,12 +62,6 @@ describe('ProductListResult component', () => {
   it('test_dont_dispatch_when_no_keys', () => {
     mockRouter.push('/search');
 
-    mockUseRouter = jest.fn(() => ({
-      query: {},
-      asPath: '/search',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
     store = mockStore({
       productList: mockStoreInitialFetchProductList,
       filterBar: mockFilterBarClose,

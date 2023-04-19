@@ -5,7 +5,7 @@ import { persistor, store } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactElement[];
 }
 
 export function Providers({ children }: Props) {

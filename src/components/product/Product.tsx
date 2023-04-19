@@ -28,12 +28,15 @@ const Product = ({ product }: Props) => {
   };
 
   return (
-    <div className='grid w-full grid-cols-1 gap-4 border-2 rounded-lg shadow-md border-1 grid-col'>
+    <div
+      className='grid w-full grid-cols-1 gap-4 border-2 rounded-lg shadow-md border-1 grid-col'
+      data-testid='product-component'
+    >
       <div className='grid grid-cols-5 gap-1 m-4'>
         <div className='grid col-span-2 place-content-center md:col-span-5'>
           <Image
             src={`https://http2.mlstatic.com/D_NQ_NP_932002-${product.thumbnail_id}-V.webp`}
-            alt={product.title}
+            alt={product.title ? `${product.title}` : 'product image'}
             className='inset-0 object-cover h-auto w-28 sm:w-40'
             loading='lazy'
             width={160}

@@ -4,15 +4,16 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 interface Props {
-  filter: IFilter;
+  id: string;
+  name: string;
 }
 
-const FilterSelected = ({ filter }: Props) => {
+const FilterSelected = ({ id, name }: Props) => {
   const { asPath } = useRouter();
 
   const newQuery = asPath
     .split('&')
-    .filter((query) => !query.includes(filter.id) && !query.includes('offset'))
+    .filter((query) => !query.includes(id) && !query.includes('offset'))
     .join('&');
 
   return (
@@ -20,13 +21,11 @@ const FilterSelected = ({ filter }: Props) => {
       data-testid='filter-selected'
       className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary text-white'
     >
-      <span className='w-full mr-2 text-sm text-white sm:text-xs'>
-        {filter.name}
-      </span>
+      <span className='w-full mr-2 text-sm text-white sm:text-xs'>{name}</span>
       <Link href={newQuery}>
-        <button className='text-sm text-white sm:text-base hover:text-black'>
+        <span className='text-sm text-white sm:text-base hover:text-black'>
           X
-        </button>
+        </span>
       </Link>
     </div>
   );

@@ -19,6 +19,7 @@ const SquareIconButton = ({ children, onClick, disabled }: Props) => {
       className={`flex items-center justify-center w-8 h-8 p-2 mx-2 text-white rounded bg-secondary hover:bg-primary hover:text-white ${
         disabled ? 'opacity-50 cursor-not-allowed' : ''
       }`}
+      data-testid='square-icon-button'
       onClick={handleClick}
       disabled={disabled}
     >
