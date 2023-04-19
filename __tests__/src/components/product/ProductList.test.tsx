@@ -19,19 +19,11 @@ jest.mock('next/router', () => require('next-router-mock'));
 const mockStore = configureMockStore([thunk]);
 
 describe('ProductList', () => {
-  let mockUseRouter: any;
   let store;
 
   beforeEach(() => {
     jest.clearAllMocks();
     mockRouter.push('/search?q=test');
-
-    mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
   });
 
   // Tests that the ProductList component maps over the products array and renders a Product component for each product.

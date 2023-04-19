@@ -1,5 +1,5 @@
 import FilterSelected from '@components/filter/FilterSelected';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import mockRouter from 'next-router-mock';
 
 jest.mock('next/router', () => require('next-router-mock'));
@@ -29,9 +29,10 @@ describe('FilterSelected', () => {
       <FilterSelected id={filter.id} name={filter.name} />
     );
 
-    //TODO no funcion el link
     const removeButton = getByRole('link');
-    fireEvent.click(removeButton);
+    act(() => {
+      fireEvent.click(removeButton);
+    });
 
     // await waitFor(() => {
     expect(mockRouter).toMatchObject({

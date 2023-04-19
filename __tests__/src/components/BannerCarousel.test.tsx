@@ -1,5 +1,5 @@
 import BannerCarousel from '@components/BannerCarousel';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 describe('BannerCarousel', () => {
   // Tests that BannerCarousel displays the correct image when a button is clicked.
@@ -14,12 +14,16 @@ describe('BannerCarousel', () => {
     expect(firstImage).toHaveClass('opacity-100');
     expect(secondImage).toHaveClass('opacity-0');
 
-    fireEvent.click(secondButton);
+    act(() => {
+      fireEvent.click(secondButton);
+    });
 
     expect(firstImage).toHaveClass('opacity-0');
     expect(secondImage).toHaveClass('opacity-100');
 
-    fireEvent.click(firstButton);
+    act(() => {
+      fireEvent.click(firstButton);
+    });
 
     expect(firstImage).toHaveClass('opacity-100');
     expect(secondImage).toHaveClass('opacity-0');

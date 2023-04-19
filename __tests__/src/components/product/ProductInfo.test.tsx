@@ -25,13 +25,6 @@ describe('ProductInfo', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockRouter.push('/search?q=test');
-
-    mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
   });
 
   // Tests that the ProductInfo component renders correctly with all required elements and props.

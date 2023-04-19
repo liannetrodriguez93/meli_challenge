@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch",
+    "test": "jest --watch --ignore=/setup.test.js",
     "test:ci": "jest --ci"
   },
   "dependencies": {

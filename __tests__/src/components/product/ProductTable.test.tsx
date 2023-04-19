@@ -25,13 +25,6 @@ describe('ProductTable', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockRouter.push('/search?q=test');
-
-    mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
   });
 
   // Tests that the function renders a table with attributes when selectedProductInfo has attributes.

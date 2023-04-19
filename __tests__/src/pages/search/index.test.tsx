@@ -36,7 +36,6 @@ const mockStore = configureMockStore([thunk]);
 
 describe('ProductListResult component', () => {
   let store;
-  let mockUseRouter: any;
 
   beforeEach(() => {
     jest.clearAllMocks();

@@ -17,7 +17,16 @@ describe('ProductDetail', () => {
 
   // Tests that the ProductDetail component renders correctly with valid input.
   it('test_product_detail_renders_correctly', () => {
-    render(<ProductDetail />);
+    store = mockStore({
+      productList: mockStoreFetchProductList,
+      filterBar: mockFilterBarClose,
+      productInfo: mockStoreFetchProductInfo,
+    });
+    render(
+      <Provider store={store}>
+        <ProductDetail />
+      </Provider>
+    );
     const description = screen.getByText(/Descripción/i);
     expect(description).toBeInTheDocument();
   });

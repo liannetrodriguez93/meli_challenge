@@ -10,6 +10,7 @@ import {
   mockStoreInitialFetchProductInfo,
   mockStoreInitialFetchProductList,
 } from '../../../../__mocks__/fetchProductMock';
+import { act } from 'react-dom/test-utils';
 
 const mockDispatch = jest.fn();
 jest.mock('@hooks/useHookApp', () => ({
@@ -29,18 +30,10 @@ jest.mock('react-modal', () => {
 
 describe('Product', () => {
   let store;
-  let mockUseRouter;
 
   beforeEach(() => {
     jest.clearAllMocks();
     mockRouter.push('/search?q=test');
-
-    mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
   });
 
   // Tests that the Product component renders correctly with valid props.
@@ -81,7 +74,9 @@ describe('Product', () => {
       </Provider>
     );
     const viewButton = screen.getAllByTestId('square-icon-button');
-    fireEvent.click(viewButton[0]);
+    act(() => {
+      fireEvent.click(viewButton[0]);
+    });
     expect(mockDispatch).toHaveBeenCalledTimes(3);
   });
 });

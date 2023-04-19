@@ -1,5 +1,5 @@
 import FilterPanel from '@components/filter/FilterPanel';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -86,7 +86,9 @@ describe('FilterPanel', () => {
 
     const closeButton = screen.getAllByRole('button');
     expect(closeButton[0]).toBeVisible();
-    fireEvent.click(closeButton[0]);
+    act(() => {
+      fireEvent.click(closeButton[0]);
+    });
     expect(mockOpenFilterBar).toHaveBeenCalled();
   });
 

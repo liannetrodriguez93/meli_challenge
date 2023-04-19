@@ -1,5 +1,5 @@
 import PaginationBar from '@components/search/PaginationBar';
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -21,13 +21,6 @@ describe('PaginationBar', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockRouter.push('/search?q=test');
-
-    mockUseRouter = jest.fn(() => ({
-      query: { q: 'test' },
-      asPath: '/search?q=test',
-    }));
-
-    jest.mock('next/router', () => ({ useRouter: mockUseRouter }));
   });
 
   // Tests that the PaginationBar component renders correctly with valid input.
@@ -59,9 +52,6 @@ describe('PaginationBar', () => {
 
   // Tests that clicking on pagination buttons updates the URL and renders new pages.
   it('test_pagination_buttons_update_url', () => {
-    const mockPush = jest.fn();
-    mockRouter.push = mockPush;
-
     store = mockStore({
       productList: mockStoreFetchProductList,
       filterBar: mockFilterBarClose,
@@ -75,13 +65,16 @@ describe('PaginationBar', () => {
     );
     const page2 = getByRole('link', { name: '2' });
 
-    fireEvent.click(page2);
-
-    expect(mockPush).toHaveBeenCalled();
+    act(() => {
+      fireEvent.click(page2);
+    });
   });
 
   // Tests that the PaginationBar component disables buttons at the beginning and end.
   it('test_pagination_bar_disables_buttons', () => {
+    const mockPush = jest.fn();
+    mockRouter.push = mockPush;
+
     store = mockStore({
       productList: mockStoreFetchProductList,
       filterBar: mockFilterBarClose,
@@ -98,5 +91,14 @@ describe('PaginationBar', () => {
     // Assert
     expect(buttons[0]).toBeDisabled();
     expect(buttons[1]).not.toBeDisabled();
+
+    act(() => {
+      fireEvent.click(buttons[1]);
+    });
+
+    expect(mockPush).toHaveBeenCalledWith({
+      pathname: '/search',
+      query: { q: 'test', offset: 2 },
+    });
   });
 });
