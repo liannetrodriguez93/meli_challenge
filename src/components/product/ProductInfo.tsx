@@ -16,7 +16,11 @@ const ProductInfo = () => {
         <div className='flex justify-center w-full h-full md:mb-0'>
           <Image
             src={`https://http2.mlstatic.com/D_NQ_NP_932002-${selectedProductInfo?.thumbnail_id}-V.webp`}
-            alt={selectedProductInfo?.title}
+            alt={
+              !!selectedProductInfo?.title
+                ? selectedProductInfo?.title
+                : 'image-product-detail'
+            }
             className='object-contain w-3/4'
             loading='lazy'
             width={250}
