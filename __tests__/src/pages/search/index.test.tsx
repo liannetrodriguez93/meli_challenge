@@ -1,22 +1,17 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { useRouter } from 'next/router';
-import { useAppDispatch, useAppSelector } from '@hooks/useHookApp';
+import { render } from '@testing-library/react';
 import { fetchProductList } from '@reduxConfig/feature/product/productThunk/meliThunk';
 import mockRouter from 'next-router-mock';
-import { Provider, TypedUseSelectorHook } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import ProductListResult from '../../../../src/pages/search';
-import { RootState } from '@reduxConfig/store';
 import {
   mockFilterBarClose,
   mockStoreErrorFetchProductList,
-  mockStoreFetchProductInfo,
   mockStoreFetchProductList,
   mockStoreInitialFetchProductInfo,
   mockStoreInitialFetchProductList,
+  mockStoreLoadFetchProductList,
 } from '../../../../__mocks__/fetchProductMock';
 import configureMockStore from 'redux-mock-store';
-import { mockStoreLoadFetchProductList } from '../../../../__mocks__/fetchProductMock';
 import thunk from 'redux-thunk';
 
 jest.mock('next/router', () => require('next-router-mock'));

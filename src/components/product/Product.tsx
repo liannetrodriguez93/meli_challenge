@@ -40,17 +40,17 @@ const Product = ({ product }: Props) => {
             height={160}
           />
         </div>
-        <div className='grid items-center w-full grid-flow-col col-span-3 grid-rows-3 h-min p4 md:col-span-5'>
-          <h5 className='h-16 text-sm font-medium sm:text-md line-clamp-3 sm:line-clamp-2'>
+        <div className='grid items-center w-full grid-flow-col col-span-3 grid-rows-3 p4 md:col-span-5'>
+          <h5 className='text-sm font-medium h-fit md:h-16 sm:text-md line-clamp-3'>
             {product.title}
           </h5>
-          <div className='grid items-center h-20 grid-flow-row'>
+          <div className='grid items-center grid-flow-row h-fit'>
             <Price
               originalPrice={product.original_price}
               price={product.price}
             />
             {product.available_quantity === 1 && (
-              <span className='text-xs font-medium text-red-500'>
+              <span className='mt-1 text-xs font-medium text-red-500'>
                 Solo uno en stock ordenar pronto
               </span>
             )}

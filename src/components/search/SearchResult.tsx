@@ -10,7 +10,7 @@ import ProductNotFound from '@components/product/ProductNotFound';
 
 function SearchResults() {
   const { products } = useAppSelector((state) => state.productList);
-  const [sideBarClass, setSideBarClass] = useState('initialState');
+  const [sideBarClass, setSideBarClass] = useState('');
   const { screenSize } = useGetWindowSize();
   const { open } = useAppSelector((state) => state.filterBar);
 

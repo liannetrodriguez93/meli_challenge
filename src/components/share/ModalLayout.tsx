@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 interface Props {
-  children: any;
+  children: JSX.Element;
   open: boolean;
   onClick: () => void;
 }

@@ -16,7 +16,10 @@ const FilterSelected = ({ filter }: Props) => {
     .join('&');
 
   return (
-    <div className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary text-white'>
+    <div
+      data-testid='filter-selected'
+      className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-primary text-white'
+    >
       <span className='w-full mr-2 text-sm text-white sm:text-xs'>
         {filter.name}
       </span>

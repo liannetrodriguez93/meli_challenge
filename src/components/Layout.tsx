@@ -7,7 +7,7 @@ import { persistor } from '@reduxConfig/store';
 
 interface Props {
   title: string;
-  children: any;
+  children: React.ReactNode;
 }
 
 const LayoutRoot = ({ children, title }: Props) => {
