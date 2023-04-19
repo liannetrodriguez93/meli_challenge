@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer';
 import Link from 'next/link';
 
 function Custom404() {
@@ -5,6 +6,7 @@ function Custom404() {
     <div
       className='grid items-end justify-center w-full h-full bg-center bg-no-repeat bg-contain -left-5'
       style={{ backgroundImage: "url('/notFound.jpg')" }}
+      data-testid='not-found-page'
     >
       <Link
         href='/'
