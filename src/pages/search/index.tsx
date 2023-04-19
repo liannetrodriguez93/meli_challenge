@@ -14,10 +14,8 @@ const ProductListResult = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const isSearchQuery = Object.keys(query).filter((q) => q.includes('q'));
-    console.log(isSearchQuery);
-    console.log(query);
-    if (isSearchQuery) {
+    const isSearchQuery = query.q;
+    if (!!isSearchQuery) {
       const newQuery = asPath.split('?')[1];
       dispatch(fetchProductList(newQuery));
     }

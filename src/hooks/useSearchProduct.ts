@@ -12,11 +12,11 @@ const useSearchProduct = () => {
     setQueryValue(newQuery);
   }, [router.query]);
 
-  const handleSetQuery = (query: string) => setQueryValue(query.trim());
+  const handleSetQuery = (query: string) => setQueryValue(query);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (queryValue !== '') {
+    if (queryValue.trimStart() !== '') {
       router.push({
         pathname: '/search',
         query: { q: queryValue },

@@ -12,12 +12,11 @@ const ErrorPage = () => {
         <p className='mb-8 text-xl text-gray-500'>
           Lo sentimos, ha ocurrido un error.
         </p>
-        <button
-          onClick={() => window.location.reload()}
-          className='p-2 text-base text-white bg-red-500 rounded-md hover:bg-red-600'
-        >
-          Volver a intentar
-        </button>
+        <Link href='/'>
+          <span className='p-2 text-base text-white bg-red-500 rounded-md hover:bg-red-600'>
+            Volver a intentar
+          </span>
+        </Link>
       </div>
     </div>
   );

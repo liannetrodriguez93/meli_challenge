@@ -16,6 +16,7 @@ import productInfoSlice from './feature/product/productSlices/productInfoSlice';
 const persistConfig: PersistConfig<RootState> = {
   key: 'root',
   storage,
+  whitelist: ['prodcutList'],
 };
 
 const rootReducer = combineReducers({
