@@ -11,20 +11,17 @@ interface Props {
 }
 
 const ModalLayout = ({ children, open, onClick }: Props) => {
-  const { screenSize } = useGetWindowSize();
+  const { width } = useGetWindowSize();
 
   const customStyles = {
     content: {
       inset: 'auto',
       right: 'auto',
-      width: screenSize.width >= 1024 ? '60%' : '80%',
+      width: width >= 1024 ? '60%' : '80%',
       height: '80%',
       bottom: 'auto',
       marginRight: '-50%',
-      transform:
-        screenSize.width >= 1024
-          ? 'translate(30%, 15%)'
-          : 'translate(12%, 12%)',
+      transform: width >= 1024 ? 'translate(30%, 15%)' : 'translate(12%, 12%)',
     },
   };
 

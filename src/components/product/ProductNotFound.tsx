@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { FaSadTear } from 'react-icons/fa';
 

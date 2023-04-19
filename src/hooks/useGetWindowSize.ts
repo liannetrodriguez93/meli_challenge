@@ -17,7 +17,7 @@ const useGetWindowSize = () => {
   }, []);
 
   return {
-    screenSize,
+    ...screenSize,
   };
 };
 

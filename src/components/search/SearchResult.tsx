@@ -11,11 +11,11 @@ import ProductNotFound from '@components/product/ProductNotFound';
 function SearchResults() {
   const { products } = useAppSelector((state) => state.productList);
   const [sideBarClass, setSideBarClass] = useState('');
-  const { screenSize } = useGetWindowSize();
+  const { width } = useGetWindowSize();
   const { open } = useAppSelector((state) => state.filterBar);
 
   useEffect(() => {
-    if (screenSize.width < 640) {
+    if (width < 640) {
       if (open) {
         setSideBarClass('grid fixed inset-y-0');
       } else {

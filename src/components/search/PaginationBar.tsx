@@ -1,6 +1,6 @@
 import { useAppSelector } from '@hooks/useHookApp';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import SquareIconButton from '../share/SquareIconButton';
 import { useRouter } from 'next/router';
