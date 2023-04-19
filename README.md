@@ -9,15 +9,15 @@ La aplicación se destaca por su enfoque centrado en el usuario y el uso de tecn
 - Redux Toolkit
 - Thunks
 
-## Principales retos
-A pesar de que no tenía experiencia previa con Next.js, trabajé duro para familiarizarme con su sintaxis y estructura. Aunque fue un desafío, la experiencia fue enriquecedora y me permitió adquirir habilidades valiosas que pueden ser útiles en futuros proyectos. En resumen, trabajar con Next.js fue un desafío gratificante.
-
 ## Funcionalidades principales
 
 - Carusel de imágenes en la pantalla principal
 - Barra de búsqueda para encontrar productos
 - Lista de productos con opciones de filtrado y ordenado
 - Vista detallada del producto
+
+## Principales retos
+El desarrollo de la aplicación presentó desafíos, especialmente trabajar con tecnologías nuevas como Next.js y TypeScript. A pesar de que no tenía experiencia previa con ellas, me esforcé por aprender y aprovechar los beneficios que ofrecían, lo que resultó en una experiencia enriquecedora y me permitió adquirir habilidades valiosas para futuros proyectos. Trabajar con tecnologías desafiantes puede ser difícil al principio, pero los beneficios son evidentes, como la detección temprana de errores y la mejora de la legibilidad del código. En resumen, enfrentar estos desafíos me permitió crecer como desarrollador y mejorar mis habilidades técnicas.
 
 ## Diseño responsive
 
